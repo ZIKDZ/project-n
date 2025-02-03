@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!-- Include jQuery -->
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Added this to stack elements vertically */
+            height: 100vh;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%; /* Ensures it's aligned at the top */
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #6A4C93;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color:rgb(153, 116, 205);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Join Us</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="id_username">Username:</label>
+            {{ form.username }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_game">Game:</label>
+            {{ form.game }} <!-- Ensure this is properly rendered with a unique ID -->
+        </div>
+
+        <div class="form-group">
+            <label for="id_rank">Rank:</label>
+            <select id="rank-dropdown" name="rank">
+                <option >Select a Rank</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="id_in_game_username">In-Game Username:</label>
+            {{ form.in_game_username }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_discord_username">Discord Username:</label>
+            {{ form.discord_username }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            $("select[name='game']").change(function() {
+                var gameId = $(this).val();  // Get the selected game ID
+                $.ajax({
+                    url: "{% url 'get_ranks' %}",
+                    data: {"game_id": gameId},  // Send the game_id to the backend
+                    dataType: "json",
+                    success: function(data) {
+                        var rankDropdown = $("#rank-dropdown");
+                        rankDropdown.empty();  // Clear the previous options
+                        rankDropdown.append('<option value="">Select a Rank</option>');
+                        $.each(data, function(index, item) {
+                            rankDropdown.append('<option value="' + item.id + '">' + item.rank_name + '</option>');
+                        });
+                        // Set the previously selected rank if it's available
+                        var previouslySelectedRank = $("input[name='rank']").val();
+                        if (previouslySelectedRank) {
+                            rankDropdown.val(previouslySelectedRank);  // Retain previously selected rank
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error: ", error);
+                    }
+                });
+            });
+        });
+        
+        
+        
+    </script>
+
+</body>
+</html>

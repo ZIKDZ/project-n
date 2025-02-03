@@ -1,0 +1,48 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        // Ajax for updating the rank field based on selected game
+        $(document).ready(function() {
+            // Trigger when game is selected
+            $('#id_game').change(function() {
+                var game_id = $(this).val();  // Get the selected game's ID
+                console.log('Selected Game ID: ', game_id);  // Debug log
+                
+                // Only make the request if a game is selected
+                if (game_id) {
+                    $.ajax({
+                        url: '{% url "admin:get_ranks" %}',
+                        data: {
+                            'game_id': game_id,
+                        },
+                        success: function(data) {
+                            console.log('Ranks fetched: ', data);  // Debug log
+
+                            // Empty the current ranks field
+                            $('#id_rank').empty();
+
+                            // Add the new options to the rank field
+                            data.forEach(function(rank) {
+                                $('#id_rank').append(new Option(rank.rank_name, rank.id));
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Ajax error: ', error);  // Debug log
+                        }
+                    });
+                } else {
+                    // If no game selected, clear rank options and add a placeholder option
+                    $('#id_rank').empty();
+                    $('#id_rank').append(new Option('Select a game first', ''));
+                }
+            });
+
+            // Trigger the change event on page load to ensure the rank field is empty if no game is selected
+            $('#id_game').trigger('change');
+        });
+    </script>
+{% endblock %}
