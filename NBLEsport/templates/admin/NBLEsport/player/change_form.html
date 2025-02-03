@@ -5,7 +5,6 @@
     {{ block.super }}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-        // Ajax for updating the rank field based on selected game
         $(document).ready(function() {
             // Trigger when game is selected
             $('#id_game').change(function() {
@@ -22,12 +21,17 @@
                         success: function(data) {
                             console.log('Ranks fetched: ', data);  // Debug log
 
-                            // Empty the current ranks field
+                            // Empty the current ranks field and preserve the selected rank (if valid)
+                            var current_rank = $('#id_rank').val();
                             $('#id_rank').empty();
+
+                            // Add a placeholder option
+                            $('#id_rank').append(new Option('Select a Rank', ''));
 
                             // Add the new options to the rank field
                             data.forEach(function(rank) {
-                                $('#id_rank').append(new Option(rank.rank_name, rank.id));
+                                var isSelected = (rank.id == current_rank) ? 'selected' : '';  // Check if the current rank is available
+                                $('#id_rank').append(new Option(rank.rank_name, rank.id, false, isSelected));
                             });
                         },
                         error: function(xhr, status, error) {
