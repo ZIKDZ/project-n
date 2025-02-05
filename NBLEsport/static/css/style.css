@@ -41,7 +41,6 @@ section{
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: url("./Images/background.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -130,13 +129,13 @@ section{
     font-weight: 700;
     margin: 10px;
 }
-.projects {
+.games {
     background-color: #f1eeee;
 }
-.projects .content{
+.games .content{
     margin-top: 30px;
 }
-.project-card{
+.game-card{
     background-color: #fff;
     border: 1px solid #fff;
     min-height: 14em;
@@ -146,23 +145,23 @@ section{
     margin: 30px;
     transition: 0.7s ease;
 }
-.project-card:hover{
+.game-card:hover{
     transform: scale(1.1);
 }
-.project-card:hover .project-image {
+.game-card:hover .game-image {
     opacity: 0.9;
 }
-.project-image img{
+.game-image img{
     width: 100%;
 }
-.project-info {
+.game-info {
     padding: 1em;
 }
-.project-category{
+.game-category{
     font-size: 0.8em;
     color: #000;
 }
-.project-title {
+.game-title {
     display: flex;
     justify-content: space-between;
     text-transform: uppercase;
@@ -175,9 +174,6 @@ section{
 }
 .more-details:hover{
     color: #f211eb;
-}
-.footer{
-    background-color: #323232;
 }
 @media (max-width:1023px) {
     header{
