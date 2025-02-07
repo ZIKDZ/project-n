@@ -26,8 +26,19 @@ class Player(models.Model):
     discord_username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(unique=True)
     rank = models.ForeignKey(Rank, on_delete=models.SET_NULL, null=True)
-    application_status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="Pending")  # New Field
+    application_status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="Pending")  
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.username} ({self.game.name}) - {self.application_status}"
+
+class Team(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name="teams")
+    players = models.ManyToManyField(Player, related_name="teams")
+    coach = models.ForeignKey(Player, on_delete=models.SET_NULL, null=True, related_name="coached_teams")
+    team_manager = models.ForeignKey(Player, on_delete=models.SET_NULL, null=True, related_name="managed_teams")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.game.name})"

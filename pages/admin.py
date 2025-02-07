@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.http import JsonResponse
 from django.urls import path
-from .models import Game, Rank, Player
+from .models import Game, Rank, Player, Team
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
@@ -34,3 +34,11 @@ class PlayerAdmin(admin.ModelAdmin):
         game_id = request.GET.get('game_id')
         ranks = Rank.objects.filter(game_id=game_id).values('id', 'rank_name')
         return JsonResponse(list(ranks), safe=False)
+
+@admin.register(Team)
+class TeamAdmin(admin.ModelAdmin):
+    list_display = ("name", "game", "coach", "team_manager", "created_at")
+    list_filter = ("game",)
+    search_fields = ("name",)
+    ordering = ("-created_at",)
+    filter_horizontal = ("players",)  # Adds a nice UI for ManyToMany fields
