@@ -55,17 +55,18 @@
         }
 
         button {
-            background-color: #6A4C93;
+            background-color: #323232;
             color: white;
             border: none;
             padding: 10px 15px;
             border-radius: 4px;
             width: 100%;
             cursor: pointer;
+            transition: background-color 0.5s ease;
         }
 
         button:hover {
-            background-color:rgb(153, 116, 205);
+            background-color: #f211eb;
         }
 
         .form-group {
@@ -81,7 +82,7 @@
 
     <h2>Join Us</h2>
 
-    <form method="post">
+    <form method="post" autocomplete="off">
         {% csrf_token %}
         
         <div class="form-group">

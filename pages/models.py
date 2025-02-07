@@ -9,6 +9,10 @@ class Game(models.Model):
 class Rank(models.Model):
     game = models.ForeignKey(Game, related_name="ranks", on_delete=models.CASCADE)
     rank_name = models.CharField(max_length=50)
+    rank_order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['rank_order']
 
     def __str__(self):
         return f"{self.rank_name} ({self.game.name})"
