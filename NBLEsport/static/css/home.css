@@ -1,3 +1,4 @@
+/* General Styles */
 header {
     background-color: var(--color-light-gray);
     width: 100%;
@@ -6,7 +7,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 200px;
+    padding: 10px 200px; /* Default padding for larger screens */
 }
 
 .logo {
@@ -14,15 +15,15 @@ header {
     color: var(--color-dark-gray);
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 1.8em;
+    font-size: 1.8em; /* Default font size for larger screens */
 }
 
 .navigation a {
     color: var(--color-dark-gray);
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 1.1em; /* Default font size for larger screens */
     font-weight: 500;
-    padding-left: 30px;
+    padding-left: 30px; /* Default padding for larger screens */
 }
 
 .navigation a:hover {
@@ -30,7 +31,7 @@ header {
 }
 
 section {
-    padding: 100px 200px;
+    padding: 100px 200px; /* Default padding for larger screens */
 }
 
 .main {
@@ -44,7 +45,7 @@ section {
 }
 
 .main h2 {
-    font-size: 1.4em;
+    font-size: 1.4em; /* Default font size for larger screens */
     font-weight: 500;
 }
 
@@ -52,12 +53,12 @@ section {
     display: inline;
     margin-top: 10px;
     color: var(--color-dark-gray);
-    font-size: 3em;
+    font-size: 3em; /* Default font size for larger screens */
     font-weight: 600;
 }
 
 .main h3 {
-    font-size: 2em;
+    font-size: 2em; /* Default font size for larger screens */
     font-weight: 700;
     letter-spacing: 1px;
     margin-top: 10px;
@@ -68,10 +69,10 @@ section {
     color: var(--color-light-gray);
     background-color: var(--color-dark-gray);
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 1.1em; /* Default font size for larger screens */
     font-weight: 600;
     display: inline-block;
-    padding: 0.9375em 2.1875em;
+    padding: 0.9375em 2.1875em; /* Default padding for larger screens */
     letter-spacing: 1px;
     border-radius: 15px;
     margin-bottom: 40px;
@@ -83,22 +84,16 @@ section {
     transform: scale(1.1);
 }
 
-.social-icons a {
-    color: var(--color-dark-gray-2);
-    font-size: 1.7em;
-    padding-right: 30px;
-    transition: 0.7s ease;
-}
-
-.social-icons a:hover {
-    color: var(--color-pink);
+/* Hide Social Icons */
+.social-icons {
+    display: none; /* Completely hide the social icons */
 }
 
 .title {
     display: flex;
     justify-content: center;
     color: var(--color-dark-gray);
-    font-size: 2.2em;
+    font-size: 2.2em; /* Default font size for larger screens */
     font-weight: 800;
     margin-bottom: 30px;
 }
@@ -112,11 +107,11 @@ section {
 
 .card {
     background-color: var(--color-white);
-    width: 21.25em;
+    width: 21.25em; /* Default width for larger screens */
     box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
     border-radius: 10px;
-    padding: 25px;
-    margin: 15px;
+    padding: 25px; /* Default padding for larger screens */
+    margin: 15px; /* Default margin for larger screens */
     transition: 0.7s ease;
 }
 
@@ -126,7 +121,7 @@ section {
 
 .icon {
     color: var(--color-dark-gray);
-    font-size: 8em;
+    font-size: 8em; /* Default font size for larger screens */
     text-align: center;
 }
 
@@ -136,7 +131,7 @@ section {
 
 .info h3 {
     color: var(--color-dark-gray);
-    font-size: 1.2em;
+    font-size: 1.2em; /* Default font size for larger screens */
     font-weight: 700;
     margin: 10px;
 }
@@ -146,17 +141,17 @@ section {
 }
 
 .games .content {
-    margin-top: 30px;
+    margin-top: 30px; /* Default margin for larger screens */
 }
 
 .game-card {
     background-color: var(--color-white);
     border: 1px solid var(--color-white);
-    min-height: 14em;
-    width: 23em;
+    min-height: 14em; /* Default height for larger screens */
+    width: 23em; /* Default width for larger screens */
     overflow: hidden;
     border-radius: 10px;
-    margin: 30px;
+    margin: 30px; /* Default margin for larger screens */
     transition: 0.7s ease;
 }
 
@@ -198,20 +193,67 @@ section {
     color: var(--color-pink);
 }
 
-@media (max-width:1023px) {
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
     header {
-        padding: 12px 20px;
+        padding: 10px 15px; /* Reduced padding for smaller screens */
     }
 
-    .title {
-        font-size: 1.8em;
+    .logo {
+        font-size: 1.2em; /* Reduced font size for smaller screens */
+    }
+
+    .navigation a {
+        font-size: 0.9em; /* Reduced font size for smaller screens */
+        padding-left: 10px; /* Reduced padding for smaller screens */
     }
 
     section {
-        padding: 80px 20px;
+        padding: 60px 15px; /* Reduced padding for smaller screens */
     }
 
-    .content {
-        align-items: center;
+    .main {
+        background-image: none !important; /* Hide background image on mobile */
+        text-align: center; /* Center text and button on mobile */
+        justify-content: center; /* Center content vertically on mobile */
+    }
+
+    .main h2 {
+        font-size: 1.5em; /* Increased font size for better readability */
+    }
+
+    .main h2 span {
+        font-size: 2em; /* Increased font size for better readability */
+    }
+
+    .main h3 {
+        font-size: 1.5em; /* Increased font size for better readability */
+    }
+
+    .main-btn {
+        font-size: 1.2em; /* Increased font size for better readability */
+        padding: 1em 2em; /* Increased padding for a bigger button */
+        margin-bottom: 15px; /* Adjusted margin for better spacing */
+    }
+
+    .title {
+        font-size: 1.8em; /* Increased font size for better readability */
+    }
+
+    .card {
+        padding: 15px; /* Further reduced padding for smaller screens */
+        margin: 10px; /* Further reduced margin for smaller screens */
+    }
+
+    .icon {
+        font-size: 5em; /* Further reduced font size for smaller screens */
+    }
+
+    .info h3 {
+        font-size: 1.2em; /* Increased font size for better readability */
+    }
+
+    .game-card {
+        margin: 15px; /* Further reduced margin for smaller screens */
     }
 }
