@@ -1,119 +1,103 @@
-{% load static %} <!-- Load static files -->
+{% extends "pages/base.html" %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBLESport</title>
+{% block head %}<link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock head %}
 
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% block body %}
+<header>
+    <a href="#" class="logo">NBLESport</a>
+    <nav class="navigation">
+        <a href="#services">About Us</a>
+        <a href="#games">Games</a>
+        <a href="join-us/" target="_blank" >Join Us</a>
+    </nav>
+</header>
 
-    <!-- Link to the CSS file -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<section class="main" style="background-image: url('{% static "images/background.jpg" %}');">
+    <div>
+        <h2>Welcome to <br><span>Nebula Esport</span></h2>
+        <h3>One Of The Top Algerian <br> E-Sport Organizations</h3>
+        <a href="#games" class="main-btn">Join Us</a>
+        <div class="social-icons">
+            <a href="https://discord.gg/Trgha7Z5RM" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://www.instagram.com/nblesport/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/nebulaespo13559" target="_blank"><i class="fa-solid fa-square-xmark"></i></a>
+        </div>
+    </div>
+</section>
 
-    <!-- Favicon -->
-    <link rel="icon" href="{% static 'favicona.ico' %}" type="image/x-icon">
-</head>
-<body>
-
-    <header>
-        <a href="#" class="logo">NBLESport</a>
-        <nav class="navigation">
-            <a href="#services">About Us</a>
-            <a href="#games">Games</a>
-            <a href="join-us/" target="_blank" >Join Us</a>
-        </nav>
-    </header>
-
-    <section class="main" style="background-image: url('{% static "images/background.jpg" %}');">
-        <div>
-            <h2>Welcome to <br><span>Nebula Esport</span></h2>
-            <h3>One Of The Top Algerian <br> E-Sport Organizations</h3>
-            <a href="#games" class="main-btn">Join Us</a>
-            <div class="social-icons">
-                <a href="https://discord.gg/Trgha7Z5RM" target="_blank"><i class="fa-brands fa-discord"></i></a>
-                <a href="https://www.instagram.com/nblesport/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://x.com/nebulaespo13559" target="_blank"><i class="fa-solid fa-square-xmark"></i></a>
+<section class="cards" id="services">
+    <h2 class="title">What Do We Do?</h2>
+    <div class="content">
+        <div class="card">
+            <div class="icon">
+                <i class="fa-solid fa-skull"></i>
+            </div>
+            <div class="info">
+                <h3>Compete in tournaments</h3>
+                <p>across Valorant, Fortnite, Rocket League, and possibly more games in the future</p>
             </div>
         </div>
-    </section>
-
-    <section class="cards" id="services">
-        <h2 class="title">What Do We Do?</h2>
-        <div class="content">
-            <div class="card">
-                <div class="icon">
-                    <i class="fa-solid fa-skull"></i>
-                </div>
-                <div class="info">
-                    <h3>Compete in tournaments</h3>
-                    <p>across Valorant, Fortnite, Rocket League, and possibly more games in the future</p>
-                </div>
+        <div class="card">
+            <div class="icon">
+                <i class="fa-regular fa-clock"></i>
             </div>
-            <div class="card">
-                <div class="icon">
-                    <i class="fa-regular fa-clock"></i>
-                </div>
-                <div class="info">
-                    <h3>Build and support teams</h3>
-                    <p>by scouting talent, training players, and helping them grow</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="icon">
-                    <i class="fa-solid fa-fire"></i>
-                </div>
-                <div class="info">
-                    <h3>Create opportunities</h3>
-                    <p>for players, streamers, and content creators to thrive in esports</p>
-                </div>
+            <div class="info">
+                <h3>Build and support teams</h3>
+                <p>by scouting talent, training players, and helping them grow</p>
             </div>
         </div>
-    </section>
-
-    <section class="games" id="games">
-        <h2 class="title">Games</h2>
-        <div class="content">
-            <div class="game-card">
-                <div class="game-image">
-                    <img src="{% static 'images/Valorant.jpg' %}" alt="Valorant">
-                </div>
-                <div class="game-info">
-                    <p class="game-category">1 Player Left</p>
-                    <strong class="game-title">
-                        <span>Valorant</span>
-                        <a href="join-us/" class="more-details" target="_blank">Join Us</a>
-                    </strong>
-                </div>
+        <div class="card">
+            <div class="icon">
+                <i class="fa-solid fa-fire"></i>
             </div>
-            <div class="game-card">
-                <div class="game-image">
-                    <img src="{% static 'images/CS.jpg' %}" alt="CS 2">
-                </div>
-                <div class="game-info">
-                    <p class="game-category">Coming Soon...</p>
-                    <strong class="game-title">
-                        <span>CS 2</span>
-                        <a href="join-us/" class="more-details" target="_blank">Join Us</a>
-                    </strong>
-                </div>
-            </div>
-            <div class="game-card">
-                <div class="game-image">
-                    <img src="{% static 'images/FC.jpg' %}" alt="FC 25">
-                </div>
-                <div class="game-info">
-                    <p class="game-category">Coming Soon...</p>
-                    <strong class="game-title">
-                        <span>FC 25</span>
-                        <a href="join-us/" class="more-details" target="_blank">Join Us</a>
-                    </strong>
-                </div>
+            <div class="info">
+                <h3>Create opportunities</h3>
+                <p>for players, streamers, and content creators to thrive in esports</p>
             </div>
         </div>
-    </section>
-</body>
-</html>
+    </div>
+</section>
+
+<section class="games" id="games">
+    <h2 class="title">Our Games</h2>
+    <div class="content">
+        <div class="game-card">
+            <div class="game-image">
+                <img src="{% static 'images/Valorant.jpg' %}" alt="Valorant">
+            </div>
+            <div class="game-info">
+                <p class="game-category">1 Player Left</p>
+                <strong class="game-title">
+                    <span>Valorant</span>
+                    <a href="join-us/" class="more-details" target="_blank">Join Us</a>
+                </strong>
+            </div>
+        </div>
+        <div class="game-card">
+            <div class="game-image">
+                <img src="{% static 'images/CS.jpg' %}" alt="CS 2">
+            </div>
+            <div class="game-info">
+                <p class="game-category">Coming Soon...</p>
+                <strong class="game-title">
+                    <span>CS 2</span>
+                    <a href="join-us/" class="more-details" target="_blank">Join Us</a>
+                </strong>
+            </div>
+        </div>
+        <div class="game-card">
+            <div class="game-image">
+                <img src="{% static 'images/FC.jpg' %}" alt="FC 25">
+            </div>
+            <div class="game-info">
+                <p class="game-category">Coming Soon...</p>
+                <strong class="game-title">
+                    <span>FC 25</span>
+                    <a href="join-us/" class="more-details" target="_blank">Join Us</a>
+                </strong>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}

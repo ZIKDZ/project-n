@@ -1,86 +1,14 @@
+{% extends "pages/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Us</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!-- Include jQuery -->
-    <link rel="icon" href="{% static 'favicona.ico' %}" type="image/x-icon">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column; /* Added this to stack elements vertically */
-            height: 100vh;
-        }
 
-        h2 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 20px;
-            width: 100%; /* Ensures it's aligned at the top */
-        }
+{% block title %}Join Us{% endblock title %}
 
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            margin-top: 20px;
-        }
-
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-            color: #555;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #323232;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            width: 100%;
-            cursor: pointer;
-            transition: background-color 0.5s ease;
-        }
-
-        button:hover {
-            background-color: #f211eb;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group select {
-            display: block;
-        }
-    </style>
-</head>
-<body>
-
-    <h2>Join Us</h2>
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/join_us/join_us.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock head %}
+{% block body %}
+<h2>Join Us</h2>
 
     <form method="post" autocomplete="off">
         {% csrf_token %}
@@ -192,6 +120,4 @@
         });
         
     </script>
-
-</body>
-</html>
+{% endblock body %}

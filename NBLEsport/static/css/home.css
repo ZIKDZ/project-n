@@ -1,13 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
-    font-family: 'Poppins', sans-serif;
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-header{
-    background-color: #f0f0f0;
+header {
+    background-color: var(--color-light-gray);
     width: 100%;
     position: fixed;
     z-index: 999;
@@ -16,27 +8,32 @@ header{
     align-items: center;
     padding: 10px 200px;
 }
-.logo{
+
+.logo {
     text-decoration: none;
-    color: #323232;
+    color: var(--color-dark-gray);
     text-transform: uppercase;
     font-weight: 700;
     font-size: 1.8em;
 }
-.navigation a{
-    color: #323232;
+
+.navigation a {
+    color: var(--color-dark-gray);
     text-decoration: none;
     font-size: 1.1em;
     font-weight: 500;
     padding-left: 30px;
 }
-.navigation a:hover{
-    color: #f211eb;
+
+.navigation a:hover {
+    color: var(--color-pink);
 }
-section{
+
+section {
     padding: 100px 200px;
 }
-.main{
+
+.main {
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -45,27 +42,31 @@ section{
     background-position: center;
     background-attachment: fixed;
 }
-.main h2{
+
+.main h2 {
     font-size: 1.4em;
     font-weight: 500;
 }
-.main h2 span{
+
+.main h2 span {
     display: inline;
     margin-top: 10px;
-    color: #323232;
+    color: var(--color-dark-gray);
     font-size: 3em;
     font-weight: 600;
 }
-.main h3{
+
+.main h3 {
     font-size: 2em;
     font-weight: 700;
     letter-spacing: 1px;
     margin-top: 10px;
     margin-bottom: 30px;
 }
-.main-btn{
-    color: #f0f0f0;
-    background-color: #323232;
+
+.main-btn {
+    color: var(--color-light-gray);
+    background-color: var(--color-dark-gray);
     text-decoration: none;
     font-size: 1.1em;
     font-weight: 600;
@@ -76,35 +77,41 @@ section{
     margin-bottom: 40px;
     transition: 0.7s ease;
 }
-.main-btn:hover{
-    background-color: #f211eb;
+
+.main-btn:hover {
+    background-color: var(--color-pink);
     transform: scale(1.1);
 }
-.social-icons a{
-    color: #272727;
+
+.social-icons a {
+    color: var(--color-dark-gray-2);
     font-size: 1.7em;
     padding-right: 30px;
     transition: 0.7s ease;
 }
-.social-icons a:hover{
-    color: #f211eb;
+
+.social-icons a:hover {
+    color: var(--color-pink);
 }
-.title{
+
+.title {
     display: flex;
     justify-content: center;
-    color: #323232;
+    color: var(--color-dark-gray);
     font-size: 2.2em;
     font-weight: 800;
     margin-bottom: 30px;
 }
+
 .content {
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
 }
+
 .card {
-    background-color: #fff;
+    background-color: var(--color-white);
     width: 21.25em;
     box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
     border-radius: 10px;
@@ -112,32 +119,39 @@ section{
     margin: 15px;
     transition: 0.7s ease;
 }
-.card:hover{
+
+.card:hover {
     transform: scale(1.1);
 }
-.icon{
-    color: #323232;
+
+.icon {
+    color: var(--color-dark-gray);
     font-size: 8em;
     text-align: center;
 }
-.info{
+
+.info {
     text-align: center;
 }
-.info h3{
-    color: #323232;
+
+.info h3 {
+    color: var(--color-dark-gray);
     font-size: 1.2em;
     font-weight: 700;
     margin: 10px;
 }
+
 .games {
-    background-color: #f1eeee;
+    background-color: var(--color-light-gray-2);
 }
-.games .content{
+
+.games .content {
     margin-top: 30px;
 }
-.game-card{
-    background-color: #fff;
-    border: 1px solid #fff;
+
+.game-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-white);
     min-height: 14em;
     width: 23em;
     overflow: hidden;
@@ -145,22 +159,28 @@ section{
     margin: 30px;
     transition: 0.7s ease;
 }
-.game-card:hover{
+
+.game-card:hover {
     transform: scale(1.1);
 }
+
 .game-card:hover .game-image {
     opacity: 0.9;
 }
-.game-image img{
+
+.game-image img {
     width: 100%;
 }
+
 .game-info {
     padding: 1em;
 }
-.game-category{
+
+.game-category {
     font-size: 0.8em;
-    color: #000;
+    color: var(--color-black);
 }
+
 .game-title {
     display: flex;
     justify-content: space-between;
@@ -168,24 +188,30 @@ section{
     font-weight: 800;
     margin-top: 10px;
 }
+
 .more-details {
     text-decoration: none;
-    color: #323232;
+    color: var(--color-dark-gray);
 }
-.more-details:hover{
-    color: #f211eb;
+
+.more-details:hover {
+    color: var(--color-pink);
 }
+
 @media (max-width:1023px) {
-    header{
+    header {
         padding: 12px 20px;
     }
-    .title{
+
+    .title {
         font-size: 1.8em;
     }
-    section{
+
+    section {
         padding: 80px 20px;
     }
-    .content{
+
+    .content {
         align-items: center;
     }
 }

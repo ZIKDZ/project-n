@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}NBL-ADMIN{% endblock %}
+
+{% block extrahead %}
+    <link rel="icon" href="{% static 'favicona.ico' %}" type="image/x-icon">
+    {{ block.super }}
+{% endblock %}
