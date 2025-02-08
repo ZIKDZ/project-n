@@ -7,8 +7,9 @@
     --color-black: #000;
     --color-white: #fff;
     --color-white-2: #ccc;
-    --color-light-gray-2: #f1eeee;
-    --color-dark-gray-2: #272727;
+    --color-dark-gray: #2a2a2a;
+    --color-light-gray: #f5f5f5;
+    --color-error: #dc3545;
 }
 
 * {

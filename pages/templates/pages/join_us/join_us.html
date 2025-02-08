@@ -7,117 +7,137 @@
 <link rel="stylesheet" href="{% static 'css/join_us/join_us.css' %}">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {% endblock head %}
-{% block body %}
-<h2>Join Us</h2>
 
-    <form method="post" autocomplete="off">
+{% block body %}
+
+<div><h2>Join Us</h2></div>
+
+<div class="form-container">
+    <div class="form-header">
+        <div class="form-logo">
+            <img src="{% static 'images/logo.png' %}" alt="Nebula logo">
+        </div>
+        <h2 class="form-title">NBLEsport</h2>
+    </div>
+
+    <form method="post" autocomplete="off" class="auth-form">
         {% csrf_token %}
-        
-        <div class="form-group">
-            <label for="id_username">Username:</label>
-            {{ form.username }}
-            {% if form.username.errors %}
-                <div class="error">
-                    {% for error in form.username.errors %}
-                        <p style="color: red;">{{ error }}</p>
-                    {% endfor %}
+        <div class="form-columns">
+            <div class="form-column">
+                <!-- Left Column: Username, Game, Rank -->
+                <div class="form-group">
+                    <label for="id_username">Username:</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <div class="error-message">
+                            {% for error in form.username.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
-        </div>
-    
-        <div class="form-group">
-            <label for="id_game">Game:</label>
-            {{ form.game }}
-            {% if form.game.errors %}
-                <div class="error">
-                    {% for error in form.game.errors %}
-                        <p style="color: red;">{{ error }}</p>
-                    {% endfor %}
+
+                <div class="form-group">
+                    <label for="id_game">Game:</label>
+                    {{ form.game }}
+                    {% if form.game.errors %}
+                        <div class="error-message">
+                            {% for error in form.game.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
-        </div>
-    
-        <div class="form-group">
-            <label for="id_rank">Rank:</label>
-            <select id="rank-dropdown" name="rank">
-                <option>Select a Rank</option>
-            </select>
-            {% if form.rank.errors %}
-                <div class="error">
-                    {% for error in form.rank.errors %}
-                        <p style="color: red;">{{ error }}</p>
-                    {% endfor %}
+
+                <div class="form-group">
+                    <label for="rank-dropdown">Rank:</label>
+                    <select id="rank-dropdown" name="rank" class="full-width">
+                        <option value="">Select a Rank</option>
+                    </select>
+                    {% if form.rank.errors %}
+                        <div class="error-message">
+                            {% for error in form.rank.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
-        </div>
-    
-        <div class="form-group">
-            <label for="id_in_game_username">In-Game Username:</label>
-            {{ form.in_game_username }}
-            {% if form.in_game_username.errors %}
-                <div class="error">
-                    {% for error in form.in_game_username.errors %}
-                        <p style="color: red;">{{ error }}</p>
-                    {% endfor %}
+            </div>
+
+            <div class="form-column">
+                <!-- Right Column: In-Game Username, Discord, Email -->
+                <div class="form-group">
+                    <label for="id_in_game_username">In-Game Username:</label>
+                    {{ form.in_game_username }}
+                    {% if form.in_game_username.errors %}
+                        <div class="error-message">
+                            {% for error in form.in_game_username.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
-        </div>
-    
-        <div class="form-group">
-            <label for="id_discord_username">Discord Username:</label>
-            {{ form.discord_username }}
-            {% if form.discord_username.errors %}
-                <div class="error">
-                    {% for error in form.discord_username.errors %}
-                        <p style="color: red;">{{ error }}</p>
-                    {% endfor %}
+
+                <div class="form-group">
+                    <label for="id_discord_username">Discord Username:</label>
+                    {{ form.discord_username }}
+                    {% if form.discord_username.errors %}
+                        <div class="error-message">
+                            {% for error in form.discord_username.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
-        </div>
-    
-        <div class="form-group">
-            <label for="id_email">Email:</label>
-            {{ form.email }}
-            {% if form.email.errors %}
-                <div class="error">
-                    {% for error in form.email.errors %}
-                        <p style="color: red;">{{ error }}</p>
-                    {% endfor %}
+
+                <div class="form-group">
+                    <label for="id_email">Email:</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="error-message">
+                            {% for error in form.email.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
+            </div>
         </div>
-    
-        <button type="submit">Submit</button>
+
+        <button type="submit" class="submit-btn">Apply Now</button>
     </form>
-    
-    <script>
-        
-        $(document).ready(function() {
-            $("select[name='game']").change(function() {
-                var gameId = $(this).val();  // Get the selected game ID
-                $.ajax({
-                    url: "{% url 'get_ranks' %}",
-                    data: {"game_id": gameId},  // Send the game_id to the backend
-                    dataType: "json",
-                    success: function(data) {
-                        var rankDropdown = $("#rank-dropdown");
-                        rankDropdown.empty();  // Clear the previous options
-                        rankDropdown.append('<option value="">Select a Rank</option>');
-                        $.each(data, function(index, item) {
-                            rankDropdown.append('<option value="' + item.id + '">' + item.rank_name + '</option>');
-                        });
-                        // Set the previously selected rank if it's available
-                        var previouslySelectedRank = $("input[name='rank']").val();
-                        if (previouslySelectedRank) {
-                            rankDropdown.val(previouslySelectedRank);  // Retain previously selected rank
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.log("Error: ", error);
-                    }
+</div>
+
+<script>
+$(document).ready(function() {
+    // Initialize ranks if game is already selected
+    const initialGame = $("select[name='game']").val();
+    if(initialGame) loadRanks(initialGame);
+
+    $("select[name='game']").change(function() {
+        loadRanks($(this).val());
+    });
+
+    function loadRanks(gameId) {
+        $.ajax({
+            url: "{% url 'get_ranks' %}",
+            data: {"game_id": gameId},
+            dataType: "json",
+            success: function(data) {
+                const rankDropdown = $("#rank-dropdown");
+                rankDropdown.empty().append('<option value="">Select a Rank</option>');
+                $.each(data, function(index, item) {
+                    rankDropdown.append($('<option>', {
+                        value: item.id,
+                        text: item.rank_name
+                    }));
                 });
-            });
+            },
+            error: function(xhr, status, error) {
+                console.error("Rank loading failed:", error);
+            }
         });
-        
-    </script>
+    }
+});
+</script>
 {% endblock body %}
